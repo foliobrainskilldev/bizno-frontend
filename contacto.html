@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Suporte Bizno Moçambique</title>
+
+    <meta name="description" content="Fale com a equipa do Bizno em Moçambique. Suporte local para a criação da sua loja online, dúvidas sobre catálogos e planos M-Pesa ou e-Mola.">
+    <meta property="og:title" content="Contacto | Suporte Bizno Moçambique">
+    <meta property="og:description" content="Fale com a equipa do Bizno. Suporte local, criação de loja online e dúvidas sobre planos M-Pesa e e-Mola.">
+    <meta property="og:image" content="https://i.ibb.co/mV9zJD5N/1775299173254.jpg">
+    <meta property="og:url" content="https://www.bizno.store/contacto">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/website-global.css">
+    <link rel="stylesheet" href="assets/css/pages/contacto.css">
+</head>
+<body>
+
+    <header class="main-header" id="main-header">
+        <div class="container">
+            <a href="/" class="logo">Bizno<span>.</span></a>
+            <nav class="main-nav">
+                <a href="/#plans">Planos</a>
+                <a href="/#features">Como Funciona</a>
+                <a href="/contacto">Contacto</a>
+                <a href="/auth/login">Login</a>
+                <a href="/auth/register" class="btn btn-primary">Criar Loja Grátis</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="/" class="logo">Bizno<span>.</span></a>
+        <a href="/#plans">Planos</a>
+        <a href="/contacto">Contacto</a>
+        <a href="/auth/login">Login</a>
+        <a href="/auth/register" class="btn btn-primary">Criar Loja Grátis</a>
+    </nav>
+
+    <section id="contact" class="section" style="padding-top: 140px;">
+        <div class="container">
+            <h2 class="section-title">Entre em Contacto</h2>
+            <p class="section-subtitle">Tem alguma pergunta, sugestão ou proposta? Adoraríamos ouvir de si.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Informação Direta</h3>
+                    <p>Para respostas mais rápidas, contacte-nos através destes canais.</p>
+                    <div class="info-item"> <iconify-icon icon="logos:whatsapp-icon"></iconify-icon> <div> <strong>WhatsApp</strong><br> <a href="https://wa.me/258834751328" target="_blank">+258 83 475 1328</a> </div> </div>
+                    <div class="info-item"> <iconify-icon icon="solar:letter-linear"></iconify-icon> <div> <strong>E-mail</strong><br> <a href="mailto:biznomozambique@gmail.com">biznomozambique@gmail.com</a> </div> </div>
+                    
+                    <h3 style="margin-top: 40px;">Siga-nos</h3>
+                    <div class="contact-socials">
+                        <a href="https://www.facebook.com/share/1AvQb7NfcM/" target="_blank"><iconify-icon icon="logos:facebook"></iconify-icon></a>
+                        <a href="https://www.instagram.com/biznomoz/profilecard/?igsh=cjRmZ3dzMzh0cjB0" target="_blank"><iconify-icon icon="skill-icons:instagram"></iconify-icon></a>
+                        <a href="https://www.tiktok.com/@bizno46?_t=ZM-8yglQ6klzMM&_r=1" target="_blank"><iconify-icon icon="logos:tiktok-icon"></iconify-icon></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Envie-nos uma Mensagem</h3>
+                    <form id="contact-form" action="https://formspree.io/f/mvggkzqr" method="POST">
+                        <div class="form-group"> <label>Seu Nome</label> <input type="text" name="name" class="input-field" required> </div>
+                        <div class="form-group"> <label>Seu E-mail</label> <input type="email" name="email" class="input-field" required> </div>
+                        <div class="form-group"> <label>Mensagem</label> <textarea name="message" class="textarea-field" required></textarea> </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="feedback-modal-overlay" id="feedback-modal-overlay">
+        <div class="feedback-modal-content">
+            <div class="feedback-modal-icon" id="feedback-modal-icon"></div>
+            <p class="feedback-modal-message" id="feedback-modal-message"></p>
+            <button class="feedback-modal-close-btn" id="feedback-modal-close-btn" style="display: none;">Fechar</button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" style="grid-column: span 2;">
+                    <h4>Sobre o Bizno</h4>
+                    <p>A nossa missão é impulsionar o comércio digital em Moçambique, oferecendo uma plataforma poderosa, acessível e incrivelmente fácil de usar que transforma a maneira como os negócios locais vendem através do WhatsApp e redes sociais.</p>
+                    <p style="margin-top: 15px; font-weight: bold; color: var(--cor-primaria);">Contacto: +258 83 475 1328 (WhatsApp/Chamadas)</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="/#plans">Planos e Preços MZN</a></li>
+                        <li><a href="/#features">Como Funciona</a></li>
+                        <li><a href="/auth/register">Criar Loja Grátis</a></li>
+                        <li><a href="/auth/login">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/termos-e-condicoes">Termos e Condições</a></li>
+                        <li><a href="/politica-de-privacidade">Política de Privacidade</a></li>
+                        <li><a href="/contacto">Contacto</a></li>
+                        <li><a href="/#faq">Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bizno. Todos os direitos reservados. | Desenvolvido em Moçambique pela <a href="https://www.instagram.com/bswebstudio?igsh=MXY2aGpjb2RueHJwcQ==" target="_blank" rel="noopener noreferrer">Brainskill</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/website-global.js"></script>
+    <script src="assets/js/pages/contacto.js"></script>
+</body>
+</html>

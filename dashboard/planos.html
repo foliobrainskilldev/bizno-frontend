@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Plano e Pagamentos - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/planos.css">
+</head>
+<body>
+    <div id="toast-container"></div>
+
+    <div class="payment-verify-overlay" id="payment-verify-overlay">
+        <div class="verify-card" id="verify-card-content">
+            <h2 id="verify-title">A confirmar a transação...</h2>
+            <p id="verify-desc">Por favor, aguarde enquanto validamos o seu pagamento.</p>
+        </div>
+    </div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header"><a href="/dashboard/index" class="sidebar-logo"><h1>Bizno</h1></a></div>
+        <div class="sidebar-menu">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/index"><iconify-icon icon="solar:widget-5-bold"></iconify-icon><span class="link-name">Dashboard</span></a></li>
+                <li class="menu-item"><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span class="link-name">Estatísticas</span></a></li>
+                <li class="menu-item"><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span class="link-name">Produtos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/orders"><iconify-icon icon="solar:document-text-bold"></iconify-icon><span class="link-name">Pedidos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/ajustes"><iconify-icon icon="solar:settings-bold"></iconify-icon><span class="link-name">Ajustes</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-bottom">
+            <ul class="menu-links">
+                <li class="menu-item active"><a href="/dashboard/planos"><iconify-icon icon="solar:card-2-bold"></iconify-icon><span class="link-name">Meu Plano</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="page-wrapper">
+        <main class="main-content" id="main-content">
+            
+            <div class="page-header" id="page-header">
+                <div class="page-header-left">
+                    <a href="/dashboard/ajustes" class="secondary-btn" style="padding: 10px; border: none; font-size: 1.5rem;"><iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon></a>
+                    <h1>Minha Subscrição</h1>
+                </div>
+                <div class="page-header-actions">
+                    <a href="/dashboard/historico-pagamentos" class="secondary-btn" style="border: 1px solid var(--borda-suave);">
+                        <iconify-icon icon="solar:history-bold"></iconify-icon> Histórico de Pagamentos
+                    </a>
+                </div>
+            </div>
+            
+            <div id="overview-skeleton" class="overview-card skeleton-box" style="height: 180px; margin-bottom: 40px;"></div>
+
+            <div class="overview-card" id="overview-content" style="display: none;">
+                <div class="overview-info">
+                    <h2>Você está no plano:</h2>
+                    <div class="plan-name">
+                        <span id="current-plan-name">...</span>
+                        <span class="status-badge" id="plan-status-badge">...</span>
+                    </div>
+                    <div class="expiry-date">
+                        <iconify-icon icon="solar:calendar-bold"></iconify-icon>
+                        <span id="plan-expiry-text">...</span>
+                    </div>
+                </div>
+                <div class="usage-stats">
+                    <div class="usage-item">
+                        <div class="usage-header">
+                            <span>Produtos Cadastrados</span>
+                            <span id="products-usage-text">0 / 0</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="products-progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Planos Disponíveis</h2>
+            
+            <div id="plans-skeleton-grid" class="plans-grid">
+                <div class="plan-card skeleton-box" style="height: 350px;"></div>
+                <div class="plan-card skeleton-box" style="height: 350px;"></div>
+                <div class="plan-card skeleton-box" style="height: 350px;"></div>
+            </div>
+
+            <div class="plans-grid" id="plans-grid" style="display: none;"></div>
+
+            <h2 class="section-title" id="payment-section-anchor">Efetuar Pagamento</h2>
+            <div class="payment-section">
+                <div class="upload-proof centered-form">
+                    <form id="payment-form">
+                        <div class="form-group">
+                            <label>Qual plano deseja?</label>
+                            <div class="custom-select-container" id="custom-plan-select" data-value="">
+                                <div class="select-selected">
+                                    <span id="plan-select-text">Escolha o plano...</span>
+                                    <iconify-icon icon="solar:alt-arrow-down-bold"></iconify-icon>
+                                </div>
+                                <div class="select-items select-hide" id="plan-options-list"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Método de Pagamento</label>
+                            <div class="custom-select-container" id="custom-provider-select" data-value="">
+                                <div class="select-selected">
+                                    <span id="provider-select-text">Selecione a preferência...</span>
+                                    <iconify-icon icon="solar:alt-arrow-down-bold"></iconify-icon>
+                                </div>
+                                <div class="select-items select-hide">
+                                    <div class="select-option" data-value="mpesa"><iconify-icon icon="solar:smartphone-bold" style="color:#e60000; margin-right:8px;"></iconify-icon> M-Pesa</div>
+                                    <div class="select-option" data-value="emola"><iconify-icon icon="solar:smartphone-bold" style="color:#ff6600; margin-right:8px;"></iconify-icon> e-Mola</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="pay-action-btn" type="submit" class="primary-btn btn-giant" style="width: 100%; margin-top: 15px;">
+                            Pagar e Ativar Plano
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/planos.js"></script>
+</body>
+</html>

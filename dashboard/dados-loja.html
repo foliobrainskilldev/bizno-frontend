@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados da Loja - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/sub-ajustes.css">
+</head>
+<body class="standalone-body">
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+
+    <main class="editor-standalone-layout">
+        <div class="page-header">
+            <a href="/dashboard/ajustes" class="secondary-btn back-btn">
+                <iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon>
+            </a>
+            <h1>Dados da Loja</h1>
+        </div>
+        
+        <div id="skeleton-view" class="skeleton-container" style="display: block;">
+            <div class="skeleton-box" style="height: 400px; border-radius: 12px;"></div>
+        </div>
+
+        <form id="account-form" class="form-container" style="display: none;">
+            <h2 class="section-title">Informações Principais</h2>
+            
+            <div class="form-group">
+                <label for="displayName">Nome da Loja (Visível para os clientes)</label>
+                <input type="text" id="displayName" maxlength="50" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="storeName">Link do Catálogo (Sem espaços ou acentos)</label>
+                <div style="display:flex; align-items:center; gap: 10px;">
+                    <input type="text" id="storeName" maxlength="50" required style="flex-grow:1;">
+                    <span style="color:var(--texto-secundario); font-weight: bold; white-space:nowrap;">.bizno.store</span>
+                </div>
+                <small>Se alterar o link, o seu link antigo deixará de funcionar.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="whatsapp">Número de WhatsApp (Receber Pedidos)</label>
+                <input type="tel" id="whatsapp" maxlength="20" required>
+            </div>
+            
+            <div class="footer-actions">
+                <button type="submit" class="primary-btn btn-giant" style="width: 100%;">Salvar Alterações</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/dados-loja.js"></script>
+</body>
+</html>

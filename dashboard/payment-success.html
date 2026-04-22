@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Confirmado - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/payment-success.css">
+</head>
+<body>
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+
+    <div class="success-screen">
+        <div class="success-card" id="status-card">
+            <div class="icon-container" id="status-icon">
+                <div class="main-circle"></div>
+                <iconify-icon icon="solar:refresh-circle-bold-duotone" class="spinning-icon"></iconify-icon>
+            </div>
+            
+            <h1 id="status-title">Processando...</h1>
+            <p id="status-desc">Estamos confirmando a transação com a operadora. Isso pode levar alguns segundos.</p>
+            
+            <div class="payment-details" id="payment-details" style="display: none;">
+                <div class="detail-row">
+                    <span>Transação:</span>
+                    <strong id="ref-value">#---</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Estado:</span>
+                    <strong id="status-value">Pendente</strong>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="/dashboard/index" class="primary-btn">Ir para o Início</a>
+                <a href="/dashboard/planos" class="secondary-btn">Gerir Assinatura</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/payment-success.js"></script>
+</body>
+</html>

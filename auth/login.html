@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="spinner-overlay" id="spinner"><div class="spinner"></div></div>
+    
+    <div class="main-container">
+        <div class="auth-header">
+            <h1>Login <span>Bizno</span></h1>
+            <p>Bem-vindo de volta! Aceda ao seu catálogo.</p>
+        </div>
+
+        <div id="messageBox" class="message-box"></div>
+        
+        <div class="google-btn-wrapper">
+            <div id="g_id_onload"
+                 data-client_id="64941390066-oig9le0vl98cl6q1f6qlsqcktkqu9i3n.apps.googleusercontent.com"
+                 data-context="signin"
+                 data-ux_mode="popup"
+                 data-callback="handleGoogleLogin"
+                 data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-shape="pill"
+                 data-theme="outline"
+                 data-text="continue_with"
+                 data-size="large"
+                 data-logo_alignment="center"
+                 data-width="360">
+            </div>
+        </div>
+        
+        <div class="modern-divider">ou com e-mail</div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="email" id="email" class="input-field" required>
+                <iconify-icon icon="solar:letter-linear"></iconify-icon>
+                <label for="email" class="input-label">E-mail</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" class="input-field" required>
+                <iconify-icon icon="solar:lock-password-linear"></iconify-icon>
+                <label for="password" class="input-label">Senha</label>
+            </div>
+            
+            <div class="options">
+                <a href="/auth/forgot-password">Esqueceu a senha?</a>
+            </div>
+
+            <button type="submit" class="submit-btn">Entrar</button>
+        </form>
+
+        <div class="auth-link">
+            <p>Ainda não tem um catálogo? <a href="/auth/register">Crie um agora</a></p>
+        </div>
+    </div>
+
+    <script src="../assets/js/auth-global.js"></script>
+    <script src="../assets/js/pages/login.js"></script>
+</body>
+</html>

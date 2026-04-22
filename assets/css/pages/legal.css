@@ -1,0 +1,13 @@
+.legal-section { padding-top: 140px; padding-bottom: 80px; }
+.legal-content { background-color: var(--branco); padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 900px; margin: 0 auto; }
+.legal-content h1 { color: var(--azul-escuro); font-size: 2.5rem; margin-bottom: 10px; }
+.legal-content .last-updated { color: var(--texto-secundario); margin-bottom: 30px; display: block; font-style: italic; }
+.legal-content h2 { color: var(--azul-escuro); font-size: 1.6rem; margin-top: 40px; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid var(--dourado); }
+.legal-content p { margin-bottom: 15px; text-align: justify; }
+.legal-content ul { list-style-position: inside; padding-left: 10px; margin-bottom: 15px; }
+.legal-content li { margin-bottom: 10px; text-align: justify; }
+
+@media (max-width: 768px) {
+    .legal-content { padding: 20px; }
+    .legal-content h1 { font-size: 2rem; }
+}

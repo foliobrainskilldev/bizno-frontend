@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Pagamentos - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/historico-pagamentos.css">
+</head>
+<body>
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header"><a href="/dashboard/index" class="sidebar-logo"><h1>Bizno</h1></a></div>
+        <div class="sidebar-menu">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/index"><iconify-icon icon="solar:widget-5-bold"></iconify-icon><span class="link-name">Dashboard</span></a></li>
+                <li class="menu-item"><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span class="link-name">Estatísticas</span></a></li>
+                <li class="menu-item"><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span class="link-name">Produtos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/orders"><iconify-icon icon="solar:document-text-bold"></iconify-icon><span class="link-name">Pedidos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/ajustes"><iconify-icon icon="solar:settings-bold"></iconify-icon><span class="link-name">Ajustes</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-bottom">
+            <ul class="menu-links">
+                <li class="menu-item active"><a href="/dashboard/planos"><iconify-icon icon="solar:card-2-bold"></iconify-icon><span class="link-name">Meu Plano</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="page-wrapper">
+        <main class="main-content" id="main-content">
+            
+            <div class="page-header" id="page-header">
+                <div class="page-header-left">
+                    <a href="/dashboard/planos" class="secondary-btn" style="padding: 10px; border: none; font-size: 1.5rem;"><iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon></a>
+                    <h1>Histórico de Pagamentos</h1>
+                </div>
+            </div>
+
+            <div id="history-skeleton" class="history-container">
+                <div class="skeleton-row skeleton"></div>
+                <div class="skeleton-row skeleton"></div>
+                <div class="skeleton-row skeleton"></div>
+                <div class="skeleton-row skeleton"></div>
+            </div>
+            
+            <div id="history-content" style="display: none;">
+                <div class="history-container">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Plano</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-tbody">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="history-list-mobile" id="history-list-mobile">
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <nav class="mobile-bottom-nav">
+        <ul>
+            <li><a href="/dashboard/index"><iconify-icon icon="solar:home-smile-bold"></iconify-icon><span>Início</span></a></li>
+            <li><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span>Métricas</span></a></li>
+            <li><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span>Catálogo</span></a></li>
+            <li><a href="/dashboard/ajustes" class="active"><iconify-icon icon="solar:user-circle-bold"></iconify-icon><span>Ajustes</span></a></li>
+        </ul>
+    </nav>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/historico-pagamentos.js"></script>
+</body>
+</html>

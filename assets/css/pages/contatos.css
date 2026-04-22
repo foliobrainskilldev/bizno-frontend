@@ -1,0 +1,27 @@
+.page-header { margin-bottom: 30px; }
+.page-header h1 { font-size: 2rem; }
+
+.form-container { background-color: var(--branco); padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 30px; }
+.section-title { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--dourado); padding-bottom: 10px; color: var(--azul-escuro); }
+.form-group { margin-bottom: 25px; }
+.form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+.form-group input[type="text"], .form-group input[type="url"], .form-group input[type="number"], .form-group input[type="tel"] { width: 100%; padding: 10px; border: 1px solid var(--borda-suave); border-radius: 6px; font-size: 1rem; font-family: 'Nunito', sans-serif; }
+.form-group small { color: var(--texto-secundario); font-size: 0.85rem; margin-top: 5px; display: block; }
+.input-with-icon { position: relative; }
+.input-with-icon iconify-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--texto-secundario); font-size: 1.2rem; }
+.input-with-icon input { padding-left: 40px; }
+
+.switch-group { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 1px solid var(--borda-suave); border-radius: 6px; }
+.switch-group label { margin-bottom: 0; font-weight: normal; }
+.switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 28px; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--dourado); }
+input:checked + .slider:before { transform: translateX(22px); }
+
+.footer-actions { margin-top: 30px; display: flex; justify-content: flex-end; }
+
+@media (max-width: 992px) {
+    .form-container { padding: 20px; }
+}

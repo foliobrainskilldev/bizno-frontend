@@ -1,0 +1,60 @@
+.upload-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+.upload-area { border: 2px dashed var(--borda-suave); border-radius: 12px; padding: 20px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #fafafa;}
+.image-preview { width: 100%; border-radius: 6px; background-color: var(--fundo-pagina); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative; }
+#banner-preview { height: 180px; }
+#logo-preview { height: 180px; width: 180px; border-radius: 50%; }
+.image-preview img { max-width: 100%; max-height: 100%; object-fit: cover; }
+#banner-preview img { border-radius: 8px; border: 1px solid var(--borda-suave); }
+#logo-preview img { width: 180px; height: 180px; border-radius: 50%; border: 1px solid var(--borda-suave); }
+.image-preview .placeholder-icon { font-size: 4.5rem; color: var(--borda-suave); }
+
+.file-upload-input { display: none; }
+.file-upload-btn { background-color: var(--branco); color: var(--texto-primario); border: 1px solid var(--borda-suave); border-radius: 8px; padding: 12px 25px; font-size: 1rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.file-upload-btn:hover { border-color: var(--dourado); color: var(--azul-escuro); }
+
+/* Estilos aprimorados para a caixa de descrição */
+.description-container {
+    background-color: var(--branco);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    margin-top: 30px;
+}
+.description-container label {
+    display: block;
+    font-weight: 700;
+    color: var(--azul-escuro);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+#storeDescription {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--borda-suave);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 5px;
+}
+#storeDescription:focus {
+    outline: none;
+    border-color: var(--dourado);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+.char-counter {
+    display: block;
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+    font-weight: 600;
+}
+.char-counter.limit-reached {
+    color: var(--vermelho-alerta);
+}
+
+@media (min-width: 768px) {
+    .upload-grid { grid-template-columns: 1fr 1fr; }
+}

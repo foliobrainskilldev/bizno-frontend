@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Produtos - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/produtos.css">
+</head>
+<body>
+    <div id="toast-container"></div>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header"><a href="/dashboard/index" class="sidebar-logo"><h1>Bizno</h1></a></div>
+        <div class="sidebar-menu">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/index"><iconify-icon icon="solar:widget-5-bold"></iconify-icon><span class="link-name">Dashboard</span></a></li>
+                <li class="menu-item"><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span class="link-name">Estatísticas</span></a></li>
+                <li class="menu-item active"><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span class="link-name">Produtos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/orders"><iconify-icon icon="solar:document-text-bold"></iconify-icon><span class="link-name">Pedidos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/ajustes"><iconify-icon icon="solar:settings-bold"></iconify-icon><span class="link-name">Ajustes</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-bottom">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/planos"><iconify-icon icon="solar:card-2-bold"></iconify-icon><span class="link-name">Meu Plano</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="page-wrapper">
+        <main class="main-content" id="main-content">
+            
+            <div class="page-header" id="page-header">
+                <div class="page-header-left"><h1>Meus Produtos</h1></div>
+                <div class="page-header-actions">
+                    <a href="/dashboard/categorias" class="primary-btn" style="background: var(--branco); color: var(--azul-escuro); border: 1px solid var(--borda-suave);"><iconify-icon icon="solar:archive-down-minimlistic-bold"></iconify-icon> Gerir Categorias</a>
+                    <a href="/dashboard/produto-editor" class="primary-btn" id="add-product-btn-desktop"><iconify-icon icon="solar:add-circle-bold"></iconify-icon> Adicionar Produto</a>
+                </div>
+            </div>
+
+            <div id="skeleton-view" class="skeleton-container" style="display: block;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+                    <div class="skeleton-row skeleton-box" style="height: 150px; border-radius: 12px;"></div>
+                    <div class="skeleton-row skeleton-box" style="height: 150px; border-radius: 12px;"></div>
+                    <div class="skeleton-row skeleton-box" style="height: 150px; border-radius: 12px;"></div>
+                </div>
+            </div>
+
+            <div id="categories-grid-view" style="display: none;">
+                <div class="categories-grid" id="categories-grid"></div>
+            </div>
+
+            <div id="category-detail-view" style="display: none;">
+                <div class="detail-view-header">
+                    <button id="back-to-categories-btn" class="secondary-btn" style="padding: 10px; border: none; font-size: 1.5rem; margin-right: 15px;">
+                        <iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon>
+                    </button>
+                    <h2 id="current-category-title" style="color: var(--azul-escuro); margin: 0; font-size: 1.5rem;">Categoria</h2>
+                </div>
+                
+                <div class="products-table-container">
+                    <table class="products-table">
+                        <thead><tr><th>Imagem</th><th>Nome</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr></thead>
+                        <tbody id="products-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="products-list-mobile" id="products-list-mobile"></div>
+            </div>
+
+            <div class="onboarding-container" id="empty-state-view" style="display: none;">
+                <iconify-icon icon="solar:shop-2-bold"></iconify-icon>
+                <h2>A sua vitrine está vazia</h2>
+                <p>Adicione a sua primeira categoria e o seu primeiro produto agora para ver o catálogo ganhar vida.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 35px; flex-wrap: wrap;">
+                    <a href="/dashboard/categorias" class="secondary-btn btn-giant">
+                        <iconify-icon icon="solar:archive-down-minimlistic-bold"></iconify-icon> Criar Categoria
+                    </a>
+                    <a href="/dashboard/produto-editor" class="primary-btn btn-giant">
+                        <iconify-icon icon="solar:add-circle-bold"></iconify-icon> Adicionar 1º Produto
+                    </a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    
+    <a href="/dashboard/produto-editor" class="add-product-fab" id="add-product-btn-fab"><iconify-icon icon="solar:add-circle-bold"></iconify-icon></a>
+    
+    <nav class="mobile-bottom-nav">
+        <ul>
+            <li><a href="/dashboard/index"><iconify-icon icon="solar:home-smile-bold"></iconify-icon><span>Início</span></a></li>
+            <li><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span>Métricas</span></a></li>
+            <li><a href="/dashboard/produtos" class="active"><iconify-icon icon="solar:box-bold"></iconify-icon><span>Catálogo</span></a></li>
+            <li><a href="/dashboard/ajustes"><iconify-icon icon="solar:user-circle-bold"></iconify-icon><span>Ajustes</span></a></li>
+        </ul>
+    </nav>
+    
+    <div class="modal-overlay" id="confirm-modal">
+        <div class="confirm-modal">
+            <iconify-icon icon="solar:danger-triangle-bold"></iconify-icon>
+            <h3>Tem a certeza?</h3>
+            <p>O produto será apagado permanentemente.</p>
+            <div class="modal-actions">
+                <button class="modal-btn secondary-btn" id="confirm-cancel-btn">Cancelar</button>
+                <button class="modal-btn primary-btn" style="background-color: var(--vermelho-alerta); color: white;" id="confirm-delete-btn">Sim, Apagar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/produtos.js"></script>
+</body>
+</html>

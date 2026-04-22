@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupons de Desconto - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/categorias.css">
+</head>
+<body>
+    <div id="toast-container"></div>
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header"><a href="/dashboard/index" class="sidebar-logo"><h1>Bizno</h1></a></div>
+        <div class="sidebar-menu">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/index"><iconify-icon icon="solar:widget-5-bold"></iconify-icon><span class="link-name">Dashboard</span></a></li>
+                <li class="menu-item"><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span class="link-name">Estatísticas</span></a></li>
+                <li class="menu-item"><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span class="link-name">Produtos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/orders"><iconify-icon icon="solar:document-text-bold"></iconify-icon><span class="link-name">Pedidos</span></a></li>
+                <li class="menu-item active"><a href="/dashboard/ajustes"><iconify-icon icon="solar:settings-bold"></iconify-icon><span class="link-name">Ajustes</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-bottom">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/planos"><iconify-icon icon="solar:card-2-bold"></iconify-icon><span class="link-name">Meu Plano</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <main class="main-content" id="main-content">
+            <div class="page-header" id="page-header">
+                <div class="page-header-left">
+                    <a href="/dashboard/ajustes" class="secondary-btn back-btn" style="border:none; padding:10px; font-size:1.5rem;">
+                        <iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon>
+                    </a>
+                    <h1 style="color:var(--azul-escuro);">Cupons de Desconto</h1>
+                </div>
+                <div class="page-header-actions">
+                    <button class="primary-btn" id="add-coupon-btn-desktop">
+                        <iconify-icon icon="solar:add-circle-bold"></iconify-icon> Criar Cupom
+                    </button>
+                </div>
+            </div>
+            
+            <div id="skeleton-view" class="skeleton-container" style="display: block;">
+                <div class="skeleton-row skeleton-box"></div>
+                <div class="skeleton-row skeleton-box"></div>
+                <div class="skeleton-row skeleton-box"></div>
+            </div>
+
+            <div class="content-container" id="content-view" style="display: none; max-width: 100%;">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead><tr><th>Código</th><th>Desconto</th><th>Uso</th><th>Validade</th><th>Ações</th></tr></thead>
+                        <tbody id="coupons-tbody"></tbody>
+                    </table>
+                </div>
+                <div class="list-mobile" id="coupons-list-mobile"></div>
+            </div>
+        </main>
+    </div>
+
+    <button class="add-category-fab" id="add-coupon-btn-mobile" title="Criar Cupom" style="bottom: 80px;">
+        <iconify-icon icon="solar:add-circle-bold"></iconify-icon>
+    </button>
+
+    <nav class="mobile-bottom-nav">
+        <ul>
+            <li><a href="/dashboard/index"><iconify-icon icon="solar:home-smile-bold"></iconify-icon><span>Início</span></a></li>
+            <li><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span>Métricas</span></a></li>
+            <li><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span>Catálogo</span></a></li>
+            <li><a href="/dashboard/ajustes" class="active"><iconify-icon icon="solar:user-circle-bold"></iconify-icon><span>Ajustes</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="modal-overlay" id="coupon-modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Novo Cupom</h2>
+                <button class="modal-close-btn" id="modal-close-btn"><iconify-icon icon="solar:close-circle-bold"></iconify-icon></button>
+            </div>
+            <form id="coupon-form">
+                <div class="form-group">
+                    <label>Código do Cupom</label>
+                    <input type="text" id="code" placeholder="Ex: BEMVINDO10" required style="padding: 15px; text-transform: uppercase;">
+                </div>
+                
+                <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+                    <div class="form-group" style="flex:1;">
+                        <label>Desconto (%)</label>
+                        <input type="number" id="discountPercentage" placeholder="Ex: 10" min="0" max="100" style="padding: 15px;">
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                        <label>Desconto Fixo (MZN)</label>
+                        <input type="number" id="discountFixed" placeholder="Ex: 500" min="0" style="padding: 15px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Limite de Usos (Opcional)</label>
+                    <input type="number" id="maxUses" placeholder="Ex: 100" min="1" style="padding: 15px;">
+                </div>
+
+                <div class="form-group">
+                    <label>Data de Validade (Opcional)</label>
+                    <input type="date" id="validUntil" style="padding: 15px;">
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="submit" class="primary-btn btn-giant" style="width: 100%;">Salvar Cupom</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="confirm-modal">
+        <div class="confirm-modal">
+            <iconify-icon icon="solar:danger-triangle-bold-duotone" style="font-size: 3rem; color: var(--vermelho-alerta); margin-bottom: 15px;"></iconify-icon>
+            <h3>Apagar Cupom?</h3>
+            <div class="modal-actions">
+                <button class="modal-btn secondary-btn" id="confirm-cancel-btn">Cancelar</button>
+                <button class="modal-btn btn-danger" style="background: var(--vermelho-alerta); color: white; border: none; padding: 10px 20px; border-radius: 8px;" id="confirm-delete-btn">Sim, Apagar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/cupons.js"></script>
+</body>
+</html>

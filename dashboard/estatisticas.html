@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/estatisticas.css">
+</head>
+<body>
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header"><a href="/dashboard/index" class="sidebar-logo"><h1>Bizno</h1></a></div>
+        <div class="sidebar-menu">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/index"><iconify-icon icon="solar:widget-5-bold"></iconify-icon><span class="link-name">Dashboard</span></a></li>
+                <li class="menu-item active"><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span class="link-name">Estatísticas</span></a></li>
+                <li class="menu-item"><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span class="link-name">Produtos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/orders"><iconify-icon icon="solar:document-text-bold"></iconify-icon><span class="link-name">Pedidos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/ajustes"><iconify-icon icon="solar:settings-bold"></iconify-icon><span class="link-name">Ajustes</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-bottom">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/planos"><iconify-icon icon="solar:card-2-bold"></iconify-icon><span class="link-name">Meu Plano</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="page-wrapper">
+        <main class="main-content" id="main-content">
+            <div class="page-header">
+                <h1>Estatísticas Avançadas</h1>
+                <button id="filter-btn" class="secondary-btn" style="border: 1px solid var(--borda-suave); color: var(--texto-primario);">
+                    <iconify-icon icon="solar:filter-bold"></iconify-icon><span>Filtrar</span>
+                </button>
+            </div>
+            <p id="current-filter-display" style="margin-bottom: 20px; font-weight: 700; color: var(--dourado);">Últimos 7 Dias</p>
+
+            <div id="skeleton-view" style="display: block;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div class="skeleton-box" style="height: 100px;"></div>
+                    <div class="skeleton-box" style="height: 100px;"></div>
+                    <div class="skeleton-box" style="height: 100px;"></div>
+                </div>
+                <div class="skeleton-box" style="height: 400px; margin-bottom: 30px;"></div>
+            </div>
+
+            <div id="content-view" style="display: none;">
+                <div class="kpi-grid">
+                    <div class="kpi-card"><div class="value" id="kpi-visits">0</div><div class="label">Total de Visitas</div></div>
+                    <div class="kpi-card"><div class="value" id="kpi-orders">0</div><div class="label">Cliques de Pedido</div></div>
+                    <div class="kpi-card"><div class="value" id="kpi-conversion">0%</div><div class="label">Conversão</div></div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><h2>Visitas e Pedidos</h2></div>
+                    <div id="main-chart" style="width: 100%; height: 350px;"></div>
+                </div>
+
+                <div class="card" style="overflow-x: auto;">
+                    <div class="card-header"><h2>Produtos Mais Vistos</h2></div>
+                    <table class="top-products-table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th></th>
+                                <th>Visualizações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top-products-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <nav class="mobile-bottom-nav">
+        <ul>
+            <li><a href="/dashboard/index"><iconify-icon icon="solar:home-smile-bold"></iconify-icon><span>Início</span></a></li>
+            <li><a href="/dashboard/estatisticas" class="active"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span>Métricas</span></a></li>
+            <li><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span>Catálogo</span></a></li>
+            <li><a href="/dashboard/ajustes"><iconify-icon icon="solar:user-circle-bold"></iconify-icon><span>Ajustes</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="modal-overlay" id="filter-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Selecionar Período</h3>
+                <button class="modal-close-btn" id="modal-close-btn"><iconify-icon icon="solar:close-circle-bold"></iconify-icon></button>
+            </div>
+            <div class="filter-options">
+                <button data-range="7days">Últimos 7 Dias</button>
+                <button data-range="30days">Últimos 30 Dias</button>
+                <button data-range="thisMonth">Este Mês</button>
+                <button id="custom-range-btn">Período Personalizado</button>
+                <div class="custom-range-fields" id="custom-range-fields">
+                    <div class="date-inputs">
+                        <input type="text" id="start-date" placeholder="Data de Início">
+                        <input type="text" id="end-date" placeholder="Data de Fim">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" id="apply-custom-filter-btn" disabled style="width: 100%;">Aplicar Filtro</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/estatisticas.js"></script>
+</body>
+</html>

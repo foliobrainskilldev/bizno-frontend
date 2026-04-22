@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes Sociais & Contatos - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/sub-ajustes.css">
+</head>
+<body class="standalone-body">
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+
+    <main class="editor-standalone-layout">
+        <div class="page-header">
+            <a href="/dashboard/ajustes" class="secondary-btn back-btn">
+                <iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon>
+            </a>
+            <h1>Redes e Contatos</h1>
+        </div>
+
+        <div id="skeleton-view" class="skeleton-container" style="display: block;">
+            <div class="skeleton-box" style="height: 500px; border-radius: 12px;"></div>
+        </div>
+        
+        <form id="visibility-form" class="form-container" style="display: none;">
+            <h2 class="section-title">O que os clientes veem na loja</h2>
+            
+            <div class="form-group">
+                <div class="switch-group">
+                    <label for="showPhone">Mostrar Botão do WhatsApp no Catálogo</label>
+                    <label class="switch"><input type="checkbox" id="showPhone"><span class="slider"></span></label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="customWhatsappMessage">Mensagem pré-definida do WhatsApp</label>
+                <input type="text" id="customWhatsappMessage" placeholder="Ex: Olá, visitei o seu catálogo e gostaria de...">
+                <small>Esta mensagem aparece quando o cliente clica no botão flutuante de WhatsApp.</small>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 40px;">As suas Redes Sociais</h2>
+            <div class="form-group">
+                <div class="switch-group">
+                    <label for="showSocials">Ativar ícones de redes sociais no rodapé</label>
+                    <label class="switch"><input type="checkbox" id="showSocials"><span class="slider"></span></label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="facebookLink"><iconify-icon icon="logos:facebook" style="vertical-align: middle; margin-right: 5px;"></iconify-icon> Link do Facebook</label>
+                <input type="url" id="facebookLink" placeholder="https://facebook.com/suapagina">
+            </div>
+
+            <div class="form-group">
+                <label for="instagramLink"><iconify-icon icon="skill-icons:instagram" style="vertical-align: middle; margin-right: 5px;"></iconify-icon> Link do Instagram</label>
+                <input type="url" id="instagramLink" placeholder="https://instagram.com/suapagina">
+            </div>
+
+            <div class="form-group">
+                <label for="tiktokLink"><iconify-icon icon="logos:tiktok-icon" style="vertical-align: middle; margin-right: 5px;"></iconify-icon> Link do TikTok</label>
+                <input type="url" id="tiktokLink" placeholder="https://tiktok.com/@suapagina">
+            </div>
+
+            <div class="footer-actions">
+                <button type="submit" class="primary-btn btn-giant" style="width: 100%;">Salvar Visibilidade</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/visibilidade.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de Produto - Bizno</title>
+    
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/produto-editor.css">
+</head>
+<body class="standalone-body">
+    <div class="spinner-overlay" id="loader"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+    
+    <main class="editor-standalone-layout">
+        
+        <div class="page-header" id="page-header">
+            <div class="page-header-left">
+                <a href="/dashboard/produtos" class="secondary-btn back-btn">
+                    <iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon>
+                </a>
+                <h1 id="page-title">Adicionar Produto</h1>
+            </div>
+            <div class="page-header-actions" id="advanced-actions-header" style="display: none;">
+                <button type="button" id="open-variants-btn" class="secondary-btn" style="border: 1px solid var(--borda-suave);">
+                    <iconify-icon icon="solar:layers-bold-duotone" style="color: var(--roxo-interacao); font-size: 1.5rem;"></iconify-icon> Opções e Variantes
+                </button>
+            </div>
+        </div>
+        
+        <div class="editor-container">
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+                
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label style="font-size: 1.1rem; color: var(--azul-escuro);">Fotos do Produto (<span id="image-count">0</span>/<span id="image-limit">1</span>)</label>
+                        <div class="image-gallery-container" id="image-gallery-container">
+                            <label class="add-image-slot" for="images" id="add-image-btn" title="Adicionar Foto">
+                                <iconify-icon icon="solar:camera-add-bold-duotone"></iconify-icon>
+                            </label>
+                        </div>
+                        <input type="file" id="images" accept="image/*" class="file-upload-input" multiple>
+                    </div>
+
+                    <div class="form-group full-width" style="margin-top: 10px;">
+                        <label for="name">Nome do Produto</label>
+                        <input type="text" id="name" placeholder="Ex: Tênis Nike Air" required style="font-size: 1.1rem; padding: 15px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Preço Base (MZN)</label>
+                        <input type="number" id="price" step="0.01" min="0" required placeholder="0" style="font-size: 1.1rem; padding: 15px;">
+                    </div>
+
+                    <div class="form-group" id="category-container">
+                        <label>Categoria</label>
+                        <div class="custom-select-trigger" id="category-trigger">
+                            <span id="category-trigger-text">Selecione uma categoria...</span>
+                            <iconify-icon icon="solar:alt-arrow-down-bold"></iconify-icon>
+                        </div>
+                        <input type="hidden" id="category" name="category">
+                        <input type="text" id="new-category-name" placeholder="Ex: Geral" style="display:none; font-size: 1.1rem; padding: 15px;">
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin: 30px 0 20px;">
+                    <button type="button" id="toggle-advanced-btn" class="primary-btn" style="padding: 12px 30px; font-size: 1.1rem;">
+                        <iconify-icon icon="solar:settings-bold"></iconify-icon> Configurações Avançadas
+                    </button>
+                </div>
+
+                <div id="advanced-options" style="display: none; background: #fafafa; padding: 25px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--borda-suave);">
+                    <h3 style="margin-bottom: 20px; color: var(--azul-escuro); font-size: 1.2rem;">Detalhes Avançados</h3>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="description">Descrição do Produto</label>
+                            <textarea id="description" placeholder="Detalhes, material..." style="padding: 15px; font-size: 1rem;"></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="seoDescription" style="display: flex; align-items: center; gap: 6px;">
+                                <iconify-icon icon="logos:google-icon" style="font-size: 1.2rem;"></iconify-icon> Descrição para o Google (SEO)
+                            </label>
+                            <input type="text" id="seoDescription" maxlength="160" placeholder="Ex: Compre o melhor Tênis Nike Air com entrega rápida em Maputo..." style="padding: 15px;">
+                            <small>Ajuda o seu produto a ser encontrado nas pesquisas do Google.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="originalPrice">Preço Antigo (Gatilho de Promoção)</label>
+                            <input type="number" id="originalPrice" step="0.01" min="0" placeholder="0" style="padding: 15px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="stock">Estoque Disponível</label>
+                            <input type="number" id="stock" value="1" min="0" placeholder="Deixe 1 se for infinito" style="padding: 15px;">
+                        </div>
+
+                        <div class="form-group full-width" style="margin-top: 15px; border-top: 1px solid var(--borda-suave); padding-top: 15px;">
+                            <label>Vídeo do Produto (Opcional)</label>
+                            <label class="file-upload-btn" for="video" style="padding: 15px; background: var(--branco);">
+                                <iconify-icon icon="solar:video-frame-add-bold-duotone" style="color: var(--azul-info); font-size: 1.5rem;"></iconify-icon> Selecionar Vídeo Curto
+                            </label>
+                            <input type="file" id="video" accept="video/mp4,video/webm" class="file-upload-input">
+                            <div id="video-preview" style="font-weight: 600; color: var(--texto-secundario);"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions" style="justify-content: center; margin-top: 20px;">
+                    <button type="submit" class="primary-btn btn-giant" style="width: 100%; padding: 18px; font-size: 1.2rem;">
+                        <iconify-icon icon="solar:check-circle-bold"></iconify-icon> Salvar Produto
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Modal de Categoria -->
+    <div class="toast-modal-overlay" id="category-toast-overlay">
+        <div class="toast-modal-content">
+            <div class="toast-modal-header">
+                <h3>Selecione a Categoria</h3>
+                <button type="button" id="close-category-toast"><iconify-icon icon="solar:close-circle-bold"></iconify-icon></button>
+            </div>
+            <div class="toast-modal-body" id="category-toast-list"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Variantes (FullScreen) -->
+    <div class="modal-overlay" id="variants-modal-overlay" style="align-items: flex-end;">
+        <div class="modal-content" style="max-width: 800px; width: 100%; border-radius: 20px 20px 0 0; padding: 30px; max-height: 90vh; overflow-y: auto;">
+            <div class="modal-header" style="border-bottom: 1px solid var(--borda-suave); padding-bottom: 15px; margin-bottom: 25px;">
+                <h2 style="color: var(--azul-escuro); display: flex; align-items: center; gap: 10px;">
+                    <iconify-icon icon="solar:layers-bold-duotone" style="color: var(--roxo-interacao);"></iconify-icon>
+                    Opções de Variantes e Adicionais
+                </h2>
+                <button class="modal-close-btn" id="close-variants-modal"><iconify-icon icon="solar:close-circle-linear"></iconify-icon></button>
+            </div>
+            
+            <div class="variants-section" style="margin-bottom: 40px;">
+                <h3 style="color: var(--azul-escuro); margin-bottom: 10px;">Variantes (Escolha Única)</h3>
+                <p style="color: var(--texto-secundario); font-size: 0.9rem; margin-bottom: 15px;">Permite que o cliente escolha uma opção de uma lista. Ex: Tamanhos (P, M, G) ou Cores (Azul, Preto).</p>
+                <div id="variants-container"></div>
+                <button type="button" id="add-variant-btn" class="secondary-btn" style="width: 100%; justify-content: center; border: 1px dashed var(--dourado); color: var(--dourado); background: rgba(212, 175, 55, 0.05);">+ Adicionar Grupo de Variante</button>
+            </div>
+
+            <div class="addons-section" style="margin-bottom: 20px;">
+                <h3 style="color: var(--azul-escuro); margin-bottom: 10px;">Complementos / Adicionais (Escolha Múltipla)</h3>
+                <p style="color: var(--texto-secundario); font-size: 0.9rem; margin-bottom: 15px;">Permite que o cliente marque extras que somam valor ao preço final. Ex: Embalagem de Presente (+100 MZN), Extra Queijo (+50 MZN).</p>
+                <div id="addons-container"></div>
+                <button type="button" id="add-addon-btn" class="secondary-btn" style="width: 100%; justify-content: center; border: 1px dashed var(--verde-sucesso); color: var(--verde-sucesso); background: rgba(40, 167, 69, 0.05);">+ Adicionar Complemento Extra</button>
+            </div>
+
+            <div class="modal-footer" style="position: sticky; bottom: -30px; background: var(--branco); padding-top: 15px; border-top: 1px solid var(--borda-suave);">
+                <button type="button" class="primary-btn btn-giant" id="save-variants-modal" style="width: 100%;">Confirmar e Voltar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/produto-editor.js"></script>
+</body>
+</html>

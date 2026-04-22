@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes da Conta - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/ajustes.css">
+</head>
+<body>
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header"><a href="/dashboard/index" class="sidebar-logo"><h1>Bizno</h1></a></div>
+        <div class="sidebar-menu">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/index"><iconify-icon icon="solar:widget-5-bold"></iconify-icon><span class="link-name">Dashboard</span></a></li>
+                <li class="menu-item"><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span class="link-name">Estatísticas</span></a></li>
+                <li class="menu-item"><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span class="link-name">Produtos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/orders"><iconify-icon icon="solar:document-text-bold"></iconify-icon><span class="link-name">Pedidos</span></a></li>
+                <li class="menu-item active"><a href="/dashboard/ajustes"><iconify-icon icon="solar:settings-bold"></iconify-icon><span class="link-name">Ajustes</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-bottom">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/planos"><iconify-icon icon="solar:card-2-bold"></iconify-icon><span class="link-name">Meu Plano</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <main class="main-content" id="main-content">
+            <div class="page-header" id="page-header">
+                <div class="page-header-left"><h1>Configurações</h1></div>
+                <div class="page-header-actions">
+                    <a href="/dashboard/apoio" class="primary-btn" style="background-color: var(--azul-info); color: white; border: none; box-shadow: 0 4px 10px rgba(91, 192, 222, 0.3);">
+                        <iconify-icon icon="solar:help-bold"></iconify-icon> Ajuda e Apoio
+                    </a>
+                </div>
+            </div>
+
+            <div class="settings-hub-container">
+                
+                <div id="skeleton-view" style="display: block;">
+                    <div class="skeleton-box" style="height: 150px; margin-bottom: 50px; border-radius: 12px;"></div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="skeleton-box" style="height: 90px; border-radius: 12px;"></div>
+                        <div class="skeleton-box" style="height: 90px; border-radius: 12px;"></div>
+                        <div class="skeleton-box" style="height: 90px; border-radius: 12px;"></div>
+                    </div>
+                </div>
+
+                <div id="content-view" style="display: none;">
+                    <div class="profile-header">
+                        <div class="avatar-upload-container">
+                            <div class="avatar-preview" id="profile-avatar-preview">
+                                <iconify-icon icon="solar:user-bold"></iconify-icon>
+                            </div>
+                            <label for="avatar-upload" class="avatar-overlay" title="Alterar foto">
+                                <iconify-icon icon="solar:camera-add-bold"></iconify-icon>
+                            </label>
+                            <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+                        </div>
+
+                        <p class="plan-expiry" id="profile-plan-expiry"></p>
+
+                        <div class="profile-details">
+                            <h2 id="profile-name">A carregar...</h2>
+                            <p class="profile-email" id="profile-email">a.carregar@email.com</p>
+                            <p class="plan-status">Subscrição: <span id="profile-plan-name">A carregar...</span></p>
+                        </div>
+
+                        <a href="/dashboard/planos" class="primary-btn upgrade-btn-corner">Atualizar</a>
+                    </div>
+                    
+                    <h3 class="settings-section-title">A Minha Loja</h3>
+                    <div class="settings-grid">
+                        <a href="/dashboard/dados-loja" class="settings-menu-item">
+                            <iconify-icon icon="solar:shop-2-bold" class="item-icon-raw" style="color: var(--dourado);"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Dados da Loja</h4>
+                                <p>Altere o nome da loja, o seu link Bizno e o WhatsApp principal.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                        <a href="/dashboard/midia" class="settings-menu-item">
+                            <iconify-icon icon="solar:gallery-bold" class="item-icon-raw" style="color: #9C27B0;"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Capa & Logotipo</h4>
+                                <p>Adicione um banner e a foto de perfil do seu catálogo.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                        <a href="/dashboard/tema" class="settings-menu-item">
+                            <iconify-icon icon="solar:palette-bold" class="item-icon-raw" style="color: #00BCD4;"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Cores da Loja</h4>
+                                <p>Personalize as cores para combinar com a sua marca.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                    </div>
+
+                    <h3 class="settings-section-title">Marketing & Conversão</h3>
+                    <div class="settings-grid">
+                        <a href="/dashboard/cupons" class="settings-menu-item">
+                            <iconify-icon icon="solar:sale-bold" class="item-icon-raw" style="color: #E91E63;"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Cupons de Desconto</h4>
+                                <p>Crie códigos promocionais para os seus clientes.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                        <a href="/dashboard/tracking" class="settings-menu-item">
+                            <iconify-icon icon="solar:chart-square-bold" class="item-icon-raw" style="color: #3F51B5;"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Marketing & Tracking</h4>
+                                <p>Configure o Facebook Pixel e o Google Analytics.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                    </div>
+
+                    <h3 class="settings-section-title">Clientes & Relacionamento</h3>
+                    <div class="settings-grid">
+                        <a href="/dashboard/clientes" class="settings-menu-item">
+                            <iconify-icon icon="solar:users-group-two-rounded-bold" class="item-icon-raw" style="color: #4CAF50;"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Meus Clientes (CRM)</h4>
+                                <p>Veja o histórico de quem já comprou no seu catálogo.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                        <a href="/dashboard/carrinhos-abandonados" class="settings-menu-item">
+                            <iconify-icon icon="solar:cart-cross-bold" class="item-icon-raw" style="color: #FF9800;"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Carrinhos Abandonados</h4>
+                                <p>Recupere vendas de clientes que não finalizaram o pedido.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                        <a href="/dashboard/messages" class="settings-menu-item">
+                            <iconify-icon icon="solar:chat-line-bold" class="item-icon-raw" style="color: var(--azul-info);"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Mensagens da Loja</h4>
+                                <p>Aceda a caixa de entrada com as dúvidas dos clientes.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                    </div>
+
+                    <h3 class="settings-section-title">Operacional</h3>
+                    <div class="settings-grid">
+                        <a href="/dashboard/visibilidade" class="settings-menu-item">
+                            <iconify-icon icon="solar:share-circle-bold" class="item-icon-raw" style="color: #E1306C;"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Redes Sociais & Contatos</h4>
+                                <p>Ligue o seu Facebook, Instagram e TikTok ao catálogo.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                        <a href="/dashboard/pagamentos-entregas" class="settings-menu-item">
+                            <iconify-icon icon="solar:wallet-money-bold" class="item-icon-raw" style="color: #8BC34A;"></iconify-icon>
+                            <div class="item-text">
+                                <h4>Pagamentos & Entregas</h4>
+                                <p>M-Pesa, e-Mola, bancos e regras de taxas de entrega.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                        <a href="/dashboard/planos" class="settings-menu-item">
+                            <iconify-icon icon="solar:card-2-bold" class="item-icon-raw" style="color: var(--azul-escuro);"></iconify-icon>
+                            <div class="item-text">
+                                <h4>A Minha Subscrição</h4>
+                                <p>Acompanhe os seus limites, pagamentos e renove o plano.</p>
+                            </div>
+                            <iconify-icon icon="solar:alt-arrow-right-bold" class="chevron"></iconify-icon>
+                        </a>
+                    </div>
+
+                    <button class="logout-btn-bottom" id="logout-btn-action">
+                        <iconify-icon icon="solar:logout-3-bold"></iconify-icon> Sair da Conta
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <nav class="mobile-bottom-nav">
+        <ul>
+            <li><a href="/dashboard/index"><iconify-icon icon="solar:home-smile-bold"></iconify-icon><span>Início</span></a></li>
+            <li><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span>Métricas</span></a></li>
+            <li><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span>Catálogo</span></a></li>
+            <li><a href="/dashboard/ajustes" class="active"><iconify-icon icon="solar:user-circle-bold"></iconify-icon><span>Ajustes</span></a></li>
+        </ul>
+    </nav>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/ajustes.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cores da Loja - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/sub-ajustes.css">
+    <link rel="stylesheet" href="../assets/css/pages/tema.css">
+</head>
+<body class="standalone-body">
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+
+    <main class="editor-standalone-layout">
+        <div class="page-header">
+            <a href="/dashboard/ajustes" class="secondary-btn back-btn">
+                <iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon>
+            </a>
+            <h1>Cores da Loja</h1>
+        </div>
+
+        <div id="skeleton-view" class="skeleton-container" style="display: block;">
+            <div class="skeleton-box" style="height: 120px; border-radius: 12px; margin-bottom: 20px;"></div>
+            <div class="skeleton-box" style="height: 400px; border-radius: 12px;"></div>
+        </div>
+        
+        <form id="theme-form" class="form-container" style="display: none;">
+            <h2 class="section-title">Temas Rápidos</h2>
+            <div class="presets-scroller" id="presets-grid"></div>
+
+            <h2 class="section-title" style="margin-top: 40px;">Cores Personalizadas</h2>
+            <div class="editor-grid">
+                <div class="editor-controls">
+                    <div class="color-pickers-grid">
+                        <div class="color-picker-wrapper"><label>Cor Principal</label><div class="iro-picker" id="picker-primary"></div></div>
+                        <div class="color-picker-wrapper"><label>Cor de Fundo</label><div class="iro-picker" id="picker-background"></div></div>
+                    </div>
+                    <div class="color-pickers-grid" style="margin-top: 20px; display: none;" id="advanced-colors">
+                        <div class="color-picker-wrapper"><label>Cor do Texto</label><div class="iro-picker" id="picker-text"></div></div>
+                        <div class="color-picker-wrapper"><label>Cor dos Produtos</label><div class="iro-picker" id="picker-cards"></div></div>
+                    </div>
+                    <button type="button" id="toggle-adv-colors" class="secondary-btn" style="margin: 20px auto; display: block; border:none; text-decoration:underline; cursor: pointer; background:transparent;">Mostrar mais cores</button>
+                </div>
+                <div class="editor-preview" id="main-preview-container">
+                    <h3 class="preview-title">Como vai ficar a Loja:</h3>
+                    
+                    <div class="preview-wrapper" id="main-preview-wrapper" style="background-color: var(--preview-fundo); padding: 0; overflow: hidden; border-radius: 12px;">
+                        <div style="background-color: var(--preview-primaria); height: 40px; display: flex; justify-content: flex-end; align-items: center; padding: 0 15px;">
+                            <iconify-icon icon="solar:cart-large-2-linear" style="color: var(--preview-fundo); font-size: 1.2rem; margin-right: 10px;"></iconify-icon>
+                            <iconify-icon icon="solar:hamburger-menu-linear" style="color: var(--preview-fundo); font-size: 1.2rem;"></iconify-icon>
+                        </div>
+                        <div style="background-color: var(--preview-primaria); color: var(--preview-fundo); border-radius: 0 0 20px 20px; padding: 10px 15px 20px; display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
+                            <div class="preview-logo" style="width: 60px; height: 60px; background: #ccc; margin-bottom: 8px; border-radius: 12px;">
+                                 <iconify-icon icon="solar:shop-2-bold" style="color: white; font-size: 1.5rem; margin-top: 15px; display:block; text-align:center;"></iconify-icon>
+                            </div>
+                            <h4 style="margin: 0; font-size: 1rem; color: var(--preview-fundo);">Nome da Loja</h4>
+                            <p style="font-size: 0.8rem; margin: 5px 0 0; opacity: 0.9; color: var(--preview-fundo);">Breve descrição com cores automáticas...</p>
+                        </div>
+                        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px; overflow: hidden; padding: 0 15px;">
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background-color: var(--preview-primaria); display: flex; align-items: center; justify-content: center; border: 2px solid var(--preview-fundo); box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                                    <iconify-icon icon="solar:box-minimalistic-bold-duotone" style="color: var(--preview-fundo); font-size: 1.5rem;"></iconify-icon>
+                                </div>
+                                <span style="font-size: 0.65rem; color: var(--preview-texto); font-weight: bold;">Categoria 1</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background-color: var(--preview-primaria); display: flex; align-items: center; justify-content: center; border: 2px solid var(--preview-fundo); box-shadow: 0 4px 8px rgba(0,0,0,0.05);">
+                                    <iconify-icon icon="solar:star-bold" style="color: var(--preview-fundo); font-size: 1.5rem;"></iconify-icon>
+                                </div>
+                                <span style="font-size: 0.65rem; color: var(--preview-texto); font-weight: bold;">Destaques</span>
+                            </div>
+                        </div>
+                        <div class="preview-card" style="margin: 20px 15px 15px; background-color: var(--preview-cards); padding: 15px; border-radius: 8px; border: 1px solid #eee; text-align: center;">
+                            <div class="preview-card-image" style="height: 100px; background-color: #e0e0e0; border-radius: 6px; margin-bottom: 10px;"></div>
+                            <h5 class="preview-card-title" style="color: var(--preview-texto);">Tênis Nike Air</h5>
+                            <p class="preview-card-price" style="color: var(--preview-primaria); font-weight: 800; margin-top: 5px;">1250 MZN</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions" style="margin-top: 40px; text-align: center;">
+                <button type="submit" class="primary-btn btn-giant" style="width: 100%;">Aplicar Cores</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/tema.js"></script>
+    <script src="../assets/js/pages/tema-extras.js"></script>
+</body>
+</html>

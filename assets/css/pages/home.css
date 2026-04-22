@@ -1,0 +1,439 @@
+#hero {
+    position: relative;
+    padding: 180px 0 120px;
+    display: flex;
+    align-items: center;
+    min-height: 90vh;
+    overflow: hidden;
+    background: var(--azul-escuro);
+}
+
+.hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(12, 35, 64, 0.95) 0%, rgba(12, 35, 64, 0.4) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+}
+
+.hero-content h1 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--branco);
+}
+
+.hero-content .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.who-is-it-for-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.who-card {
+    text-align: center;
+}
+
+.who-card .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background-color: #e7f3ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.who-card .icon-wrapper iconify-icon {
+    font-size: 2.5rem;
+    color: var(--azul-escuro);
+}
+
+.who-card h3 {
+    font-size: 1.2rem;
+    color: var(--azul-escuro);
+    margin-bottom: 10px;
+}
+
+.comparison-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: auto;
+    background: var(--branco);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 20px;
+    border-bottom: 1px solid var(--borda-suave);
+}
+
+.comparison-table th {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--azul-escuro);
+    background-color: var(--fundo-pagina);
+}
+
+.comparison-table th.whatsapp-col {
+    width: 30%;
+    text-align: center;
+    color: #25D366;
+}
+
+.comparison-table th.bizno-col {
+    width: 40%;
+    text-align: center;
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    border-radius: 0 15px 0 0;
+}
+
+.comparison-table td {
+    font-size: 1rem;
+    color: var(--texto-secundario);
+    vertical-align: middle;
+}
+
+.comparison-table td:nth-child(2) {
+    text-align: center;
+}
+
+.comparison-table td.bizno-highlight {
+    background-color: rgba(212, 175, 55, 0.05);
+    color: var(--azul-escuro);
+    font-weight: 700;
+    border-left: 2px solid var(--dourado);
+    border-right: 2px solid var(--dourado);
+}
+
+.comparison-table td.bizno-highlight iconify-icon {
+    color: var(--verde-sucesso);
+    font-size: 1.2rem;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tr:last-child td.bizno-highlight {
+    border-bottom: 2px solid var(--dourado);
+    border-radius: 0 0 15px 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    align-items: center;
+    gap: 80px;
+}
+
+.features-list .feature-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.features-list .feature-item .icon {
+    font-size: 2rem;
+    color: var(--dourado);
+}
+
+.features-list .feature-item h3 {
+    font-size: 1.2rem;
+    color: var(--azul-escuro);
+    margin-bottom: 5px;
+}
+
+.features-image-container {
+    position: relative;
+}
+
+.features-image-container img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.features-image-container::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 80%;
+    height: 80%;
+    background: var(--dourado);
+    border-radius: 12px;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.plans-container {
+    position: relative;
+}
+
+.plans-scroller {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 20px;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.plan-card {
+    flex: 0 0 320px;
+    scroll-snap-align: center;
+    background: var(--branco);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    border: 2px solid var(--borda-suave);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.plan-card.featured {
+    border-color: var(--dourado);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dourado);
+    color: var(--azul-escuro);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.plan-card h3 {
+    font-size: 1.5rem;
+    color: var(--azul-escuro);
+}
+
+.plan-card .price {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--azul-escuro);
+    margin: 15px 0;
+}
+
+.plan-card .price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--texto-secundario);
+}
+
+.plan-card .plan-description {
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+    min-height: 60px;
+}
+
+.plan-card .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.plan-card .features-list li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.plan-card .features-list .feature--included iconify-icon {
+    color: var(--verde-sucesso);
+}
+
+.plan-card .features-list .feature--excluded {
+    color: var(--texto-secundario);
+    text-decoration: line-through;
+}
+
+.plan-card .features-list .feature--excluded iconify-icon {
+    color: var(--vermelho-alerta);
+}
+
+.plan-card .btn {
+    margin-top: auto;
+}
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--branco);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+.faq-question iconify-icon {
+    font-size: 1.5rem;
+    color: var(--dourado);
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question iconify-icon {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.faq-answer p {
+    padding: 0 20px 20px;
+}
+
+#cta.section {
+    padding: 0;
+}
+
+.cta-container {
+    background: var(--azul-escuro);
+    color: var(--branco);
+    border-radius: 20px;
+    margin: 0 20px 100px;
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.cta-container h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.cta-container p {
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .features-image-container {
+        grid-row: 1;
+        margin-bottom: 40px;
+    }
+    .features-list {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero {
+        min-height: 85vh;
+        padding: 150px 0 100px;
+    }
+    .hero-bg-image {
+        object-position: top center;
+    }
+    .hero-content {
+        text-align: center;
+        margin: 0 auto;
+    }
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    .hero-overlay {
+        background: rgba(12, 35, 64, 0.85);
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .comparison-table th, .comparison-table td {
+        padding: 15px 10px;
+        font-size: 0.9rem;
+    }
+    .comparison-table th {
+        font-size: 1rem;
+    }
+    .comparison-table td.bizno-highlight iconify-icon {
+        display: block;
+        margin: 0 auto 5px;
+        font-size: 1.5rem;
+    }
+}

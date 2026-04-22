@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens de Contato - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/sub-ajustes.css">
+    <link rel="stylesheet" href="../assets/css/pages/interactions.css">
+</head>
+<body class="standalone-body">
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+
+    <main class="editor-standalone-layout">
+        <div class="page-header">
+            <a href="/dashboard/ajustes" class="secondary-btn back-btn">
+                <iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon>
+            </a>
+            <h1>Mensagens da Loja</h1>
+        </div>
+        
+        <div id="skeleton-view" class="skeleton-container" style="display: block;">
+            <div class="skeleton-box" style="height: 150px; margin-bottom: 20px; border-radius: 8px;"></div>
+            <div class="skeleton-box" style="height: 150px; border-radius: 8px;"></div>
+        </div>
+
+        <div id="content-view" style="display: none;">
+            <div class="interactions-list" id="messages-list"></div>
+        </div>
+    </main>
+
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/messages.js"></script>
+</body>
+</html>

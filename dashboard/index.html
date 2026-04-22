@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@11.0.1/dist/css/shepherd.css"/>
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/dashboard.css">
+</head>
+<body>
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+
+    <nav class="sidebar" id="sidebar">
+       <div class="sidebar-header">
+            <a href="/dashboard/index" class="sidebar-logo"><h1>Bizno</h1></a>
+        </div>
+        <div class="sidebar-menu">
+            <ul class="menu-links">
+                <li class="menu-item active"><a href="/dashboard/index"><iconify-icon icon="solar:widget-5-bold"></iconify-icon><span class="link-name">Dashboard</span></a></li>
+                <li class="menu-item"><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span class="link-name">Estatísticas</span></a></li>
+                <li class="menu-item"><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span class="link-name">Produtos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/orders"><iconify-icon icon="solar:document-text-bold"></iconify-icon><span class="link-name">Pedidos</span></a></li>
+                <li class="menu-item"><a href="/dashboard/ajustes"><iconify-icon icon="solar:settings-bold"></iconify-icon><span class="link-name">Ajustes</span></a></li>
+            </ul>
+        </div>
+        <div class="sidebar-bottom">
+            <ul class="menu-links">
+                <li class="menu-item"><a href="/dashboard/planos"><iconify-icon icon="solar:card-2-bold"></iconify-icon><span class="link-name">Meu Plano</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="page-wrapper">
+        <div class="email-verify-banner" id="email-verify-banner" style="display: none; width: 100%;">
+            <iconify-icon icon="solar:danger-circle-bold"></iconify-icon>
+            O seu e-mail ainda não foi confirmado!
+            <button id="btn-verify-now" style="background:none; border:none; color:white; text-decoration:underline; font-weight:800; cursor:pointer; font-size:1rem; font-family:inherit; margin-left:10px;">Confirmar Agora</button>
+        </div>
+        
+        <div class="whatsapp-warning-banner" id="whatsapp-warning-banner" style="display: none; width: 100%;">
+            <iconify-icon icon="solar:danger-triangle-bold"></iconify-icon>
+            O seu WhatsApp provisório precisa ser atualizado para poder receber pedidos!
+            <a href="/dashboard/dados-loja">Atualizar Agora</a>
+        </div>
+
+        <main class="main-content" id="main-content">
+            <div class="page-header" id="page-header">
+                <div class="page-header-left"><h1>Visão Geral</h1></div>
+                <div class="page-header-actions"></div>
+            </div>
+            
+            <div id="skeleton-view" style="display: block;">
+                <div class="skeleton-box" style="height: 60px; margin-bottom: 20px; border-radius: 8px;"></div>
+                <div class="skeleton-box" style="height: 60px; margin-bottom: 30px; border-radius: 8px;"></div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    <div class="skeleton-box" style="height: 120px; border-radius: 8px;"></div>
+                    <div class="skeleton-box" style="height: 120px; border-radius: 8px;"></div>
+                    <div class="skeleton-box" style="height: 120px; border-radius: 8px;"></div>
+                </div>
+            </div>
+
+            <div id="onboarding-view" style="display: none;">
+                <header class="header">
+                    <h1 id="welcome-message-new">Bem-vindo(a) à Bizno!</h1>
+                    <p>O seu catálogo digital foi criado e está pronto para receber produtos.</p>
+                </header>
+                <div class="onboarding-container" id="tour-onboarding">
+                    <iconify-icon icon="solar:box-bold" style="font-size: 5rem; color: var(--dourado); margin-bottom: 15px;"></iconify-icon>
+                    <h2>Vamos adicionar o seu primeiro produto?</h2>
+                    <p>Não perca tempo com configurações chatas agora. Adicione um produto em 30 segundos e veja a magia acontecer.</p>
+                    <a href="/dashboard/produto-editor" class="primary-btn btn-giant" style="width: 100%; margin-top: 15px;">Criar Meu 1º Produto</a>
+                </div>
+            </div>
+
+            <div id="dashboard-view" style="display: none;">
+                <header class="header">
+                    <h1 id="welcome-message">Bem-vindo(a) de volta!</h1>
+                    <p>Aqui está o resumo do desempenho da sua loja.</p>
+                </header>
+                
+                <div id="plan-notification" class="plan-notification">
+                    <div class="notification-content">
+                        <iconify-icon id="notification-icon" class="notification-icon" icon=""></iconify-icon>
+                        <div class="text-group">
+                            <h3 id="notification-title"></h3>
+                            <p id="notification-text"></p>
+                        </div>
+                    </div>
+                    <a href="/dashboard/planos" class="upgrade-btn">Ver Planos</a>
+                </div>
+
+                <div class="info-bar" id="tour-link">
+                    <div class="info-bar-item">
+                        <iconify-icon icon="solar:link-circle-bold"></iconify-icon>
+                        <span>Seu Link:</span>
+                        <a href="#" id="nav-public-store-desk" target="_blank" style="text-decoration: none; flex-grow: 1; display:flex;">
+                            <span id="store-url-display">a carregar...</span>
+                        </a>
+                        <div class="link-actions">
+                            <button id="copy-url-btn" title="Copiar URL"><iconify-icon icon="solar:copy-bold"></iconify-icon></button>
+                            <button id="share-url-btn" title="Partilhar URL"><iconify-icon icon="solar:share-bold"></iconify-icon></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="help-bar">
+                    <span class="help-bar-text"><iconify-icon icon="logos:whatsapp-icon"></iconify-icon> Receba pedidos no seu WhatsApp!</span>
+                    <div class="help-bar-buttons">
+                        <a href="/dashboard/dados-loja" class="primary-btn">Configurar Agora</a>
+                    </div>
+                </div>
+
+                <div class="stats-grid" id="tour-stats">
+                    <a href="/dashboard/produtos" class="stat-card" style="text-decoration: none; color: inherit;"> 
+                        <div class="icon icon-products"><iconify-icon icon="solar:box-bold"></iconify-icon></div> 
+                        <div class="info"><h3 id="stat-products">0</h3><p>Produtos</p></div> 
+                    </a>
+                    <a href="/dashboard/orders" class="stat-card" style="text-decoration: none; color: inherit;"> 
+                        <div class="icon icon-orders"><iconify-icon icon="solar:clipboard-list-bold"></iconify-icon></div> 
+                        <div class="info"><h3 id="stat-orders">0</h3><p>Pedidos</p></div> 
+                    </a>
+                    <a href="/dashboard/estatisticas" class="stat-card" style="text-decoration: none; color: inherit;"> 
+                        <div class="icon icon-visits"><iconify-icon icon="solar:eye-bold"></iconify-icon></div> 
+                        <div class="info"><h3 id="stat-visits">0</h3><p>Visitas</p></div> 
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <nav class="mobile-bottom-nav">
+        <ul>
+            <li><a href="/dashboard/index" class="active"><iconify-icon icon="solar:home-smile-bold"></iconify-icon><span>Início</span></a></li>
+            <li><a href="/dashboard/estatisticas"><iconify-icon icon="solar:chart-2-bold"></iconify-icon><span>Métricas</span></a></li>
+            <li><a href="/dashboard/produtos"><iconify-icon icon="solar:box-bold"></iconify-icon><span>Catálogo</span></a></li>
+            <li><a href="/dashboard/ajustes"><iconify-icon icon="solar:user-circle-bold"></iconify-icon><span>Ajustes</span></a></li>
+        </ul>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/shepherd.js@11.0.1/dist/js/shepherd.min.js"></script>
+    <script src="../assets/js/dashboard-global.js"></script>
+    <script src="../assets/js/pages/dashboard.js"></script>
+    <script src="../assets/js/pages/index-dashboard.js"></script>
+</body>
+</html>

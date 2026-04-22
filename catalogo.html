@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Catálogo</title>
+    
+    <link rel="icon" id="dynamic-favicon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/views.css">
+</head>
+<body>
+
+    <div class="delivery-marquee" id="delivery-marquee" style="display: none;">
+        <div class="delivery-marquee--content">
+            <span id="delivery-marquee-text"></span>
+            <span id="delivery-marquee-text-clone"></span>
+        </div>
+    </div>
+
+    <div class="spinner-overlay" id="loader">
+        <div class="loader-content">
+            <h3 class="loader-text">A carregar...</h3>
+            <div class="progress-bar-container"><div class="progress-bar"></div></div>
+        </div>
+    </div>
+    
+    <header class="store-header">
+        <div class="header-left"></div> 
+        <div class="header-right-actions">
+            <a href="#" id="cart-button" class="header-btn">
+                <iconify-icon icon="solar:cart-large-2-linear"></iconify-icon>
+                <span id="cart-count">0</span>
+            </a>
+            <button class="header-btn" id="menu-toggle"><iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon></button>
+        </div>
+    </header>
+    
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <div id="store-view" class="page-view">
+        <div class="store-hero-banner" id="store-hero-banner">
+            <div class="container" style="width: 100%; display: flex; flex-direction: column; align-items: flex-start;">
+                <img src="" alt="Logotipo" class="store-logo" id="store-logo">
+                <div class="welcome-text" id="welcome-text-container"> 
+                    <h1 id="store-name" style="display: none;"></h1> 
+                    <div id="store-description"></div>
+                </div>
+            </div>
+        </div>
+
+        <main class="container">
+            <div class="filter-bar">
+                <button id="filter-btn" class="header-btn filter-btn-solid">
+                    <iconify-icon icon="solar:filter-bold"></iconify-icon>
+                </button>
+                <div class="search-wrapper">
+                    <input type="text" id="search-input" placeholder="Pesquisar produtos...">
+                    <div class="search-icon-wrapper">
+                        <iconify-icon icon="solar:magnifer-bold" id="search-icon-svg"></iconify-icon>
+                        <div class="search-spinner" id="search-spinner" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="homepage-sections"></div>
+
+            <div id="grid-view-content" style="display: none;">
+                <div class="section-header-wrapper" style="margin-top: 20px;">
+                    <h2 class="section-title" id="grid-title"></h2>
+                </div>
+                <div class="products-grid" id="products-grid"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="product-detail-view" class="page-view">
+        <div class="container pdp-container">
+            <div class="pdp-media-viewer fade-in" id="pdp-media-viewer"></div>
+            <div class="pdp-thumbnails fade-in" id="pdp-thumbnails"></div>
+            
+            <div class="pdp-details-container fade-in">
+                <h1 id="pdp-product-name"></h1>
+                <div class="pdp-price-box" id="pdp-price-box"></div>
+                <hr class="pdp-separator">
+                <div class="pdp-description-box">
+                    <h3><iconify-icon icon="solar:info-circle-linear"></iconify-icon> Descrição</h3>
+                    <p id="pdp-product-description"></p>
+                </div>
+                <hr class="pdp-separator">
+            </div>
+
+            <div class="pdp-actions fade-in" id="pdp-actions"></div>
+            <section class="related-products-section fade-in" id="related-products-section"></section>
+        </div>
+    </div>
+
+    <div id="checkout-view" class="page-view">
+        <div class="container checkout-container">
+            <h1 class="page-title">Finalizar Pedido</h1>
+            <div class="checkout-summary" id="checkout-summary-box"></div>
+            <form class="checkout-form" id="checkout-form">
+                <h3>Seus Dados</h3>
+                <div class="form-group"><label for="customerName">Nome Completo</label><input type="text" id="customerName" required></div>
+                <div class="form-group"><label for="customerContact">Contacto (WhatsApp)</label><input type="tel" id="customerContact" required></div>
+                <div class="form-group" id="address-form-group"><label for="customerAddress">Endereço de Entrega</label><textarea id="customerAddress" rows="3" required></textarea></div>
+                <div class="form-group"><label for="customerDetails">Detalhes Adicionais (Opcional)</label><textarea id="customerDetails" rows="3" placeholder="Ex: cor, tamanho..."></textarea></div>
+                <h3>Método de Pagamento</h3>
+                <div class="payment-methods" id="payment-methods-box"></div>
+                <button type="submit" class="finalize-btn"><iconify-icon icon="logos:whatsapp-icon"></iconify-icon>Finalizar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="catalog-footer" id="catalog-footer"></footer>
+
+    <a href="#" id="whatsapp-fab" class="whatsapp-fab"><iconify-icon icon="logos:whatsapp-icon"></iconify-icon></a>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="cart-modal" id="cart-modal"></div>
+        <div class="filter-modal" id="filter-modal"></div>
+    </div>
+
+    <div class="notification-modal-overlay" id="notification-overlay">
+        <div class="notification-modal" id="notification-modal">
+            <div class="notification-icon" id="notification-icon"></div>
+            <h3 class="notification-title" id="notification-title"></h3>
+            <p class="notification-message" id="notification-message"></p>
+            <button class="notification-close-btn" id="notification-close-btn">OK</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="../assets/js/state.js"></script>
+    <script src="../assets/js/ui.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/pages/catalogo.js"></script>
+</body>
+</html>

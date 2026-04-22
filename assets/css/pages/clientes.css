@@ -1,0 +1,32 @@
+.vip-badge {
+    background-color: var(--dourado);
+    color: var(--azul-escuro);
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 800;
+    margin-left: 10px;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+.whatsapp-btn {
+    background-color: var(--whatsapp-cor);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: transform 0.2s;
+}
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+}
+.data-table td {
+    vertical-align: middle;
+}

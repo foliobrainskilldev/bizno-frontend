@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie o seu Catálogo - Bizno</title>
+    <meta property="og:title" content="Bizno | Crie um Catálogo Digital Profissional">
+    <meta property="og:description" content="Transforme a maneira como você vende online. Crie um catálogo digital elegante em minutos.">
+    <meta property="og:image" content="https://i.ibb.co/mV9zJD5N/1775299173254.jpg">
+    <meta property="og:url" content="https://www.bizno.store">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="spinner-overlay" id="spinner"><div class="spinner"></div></div>
+    
+    <div style="max-width: 1200px; width: 100%; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
+        <div class="main-container">
+            <div class="auth-header">
+                <h1>Crie o seu Catálogo <span>Bizno</span></h1>
+                <p id="step-description">Passo 1 de 2: Dados de Acesso</p>
+            </div>
+
+            <div id="messageBox" class="message-box"></div>
+
+            <form id="registerForm">
+                <div id="step-1">
+                    
+                    <div class="google-btn-wrapper">
+                        <div id="g_id_onload"
+                             data-client_id="64941390066-oig9le0vl98cl6q1f6qlsqcktkqu9i3n.apps.googleusercontent.com"
+                             data-context="signup"
+                             data-ux_mode="popup"
+                             data-callback="handleGoogleLogin"
+                             data-auto_prompt="false">
+                        </div>
+                        <div class="g_id_signin"
+                             data-type="standard"
+                             data-shape="pill"
+                             data-theme="outline"
+                             data-text="continue_with"
+                             data-size="large"
+                             data-logo_alignment="center"
+                             data-width="360">
+                        </div>
+                    </div>
+                    
+                    <div class="modern-divider">ou com e-mail</div>
+
+                    <div class="input-group">
+                        <input type="email" id="email" class="input-field" required maxlength="100">
+                        <iconify-icon icon="solar:letter-linear"></iconify-icon>
+                        <label for="email" class="input-label">O seu E-mail</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" class="input-field" required minlength="6" maxlength="100">
+                        <iconify-icon icon="solar:lock-password-linear"></iconify-icon>
+                        <label for="password" class="input-label">Crie uma Senha Forte</label>
+                    </div>
+                    <button type="button" id="next-btn" class="submit-btn">
+                        Continuar <iconify-icon icon="solar:arrow-right-linear" style="vertical-align: middle;"></iconify-icon>
+                    </button>
+                </div>
+
+                <div id="step-2" style="display: none;">
+                    <div class="input-group">
+                        <input type="text" id="storeName" class="input-field" maxlength="50">
+                        <iconify-icon icon="solar:shop-2-linear"></iconify-icon>
+                        <label for="storeName" class="input-label">Nome da Sua Loja</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="whatsapp" class="input-field" maxlength="20">
+                        <iconify-icon icon="solar:phone-linear"></iconify-icon>
+                        <label for="whatsapp" class="input-label">WhatsApp (Para Pedidos)</label>
+                    </div>
+                    
+                    <button type="button" id="back-btn" class="submit-btn" style="background-color: #f1f1f1; color: var(--azul-escuro); margin-bottom: 10px;">
+                        Voltar
+                    </button>
+                    <button type="submit" id="submit-btn" class="submit-btn">
+                        Criar e Acessar Painel <iconify-icon icon="solar:rocket-bold-duotone" style="vertical-align: middle;"></iconify-icon>
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-link">
+                <p>Já tem uma conta? <a href="/auth/login">Entre agora</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/auth-global.js"></script>
+    <script src="../assets/js/pages/register.js"></script>
+</body>
+</html>

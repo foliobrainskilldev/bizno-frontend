@@ -1,0 +1,13 @@
+.how-section { padding-top: 140px; padding-bottom: 80px; }
+.video-gallery { display: grid; grid-template-columns: 1fr; gap: 60px; max-width: 900px; margin: 0 auto; }
+.video-block { background-color: var(--branco); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; }
+.video-block h3 { font-size: 1.5rem; color: var(--azul-escuro); padding: 20px 25px 0; }
+.video-wrapper { margin: 20px 25px; }
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+.video-actions { padding: 0 25px 25px; text-align: right; }
+.cta-section { text-align: center; margin-top: 80px; }
+
+@media (max-width: 768px) {
+    .video-block h3 { font-size: 1.3rem; }
+}

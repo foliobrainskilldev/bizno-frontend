@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capa e Logotipo - Bizno</title>
+    <link rel="icon" href="https://i.ibb.co/mV9zJD5N/1775299173254.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+
+    <link rel="stylesheet" href="../assets/css/dashboard-layout.css">
+    <link rel="stylesheet" href="../assets/css/pages/sub-ajustes.css">
+    <link rel="stylesheet" href="../assets/css/pages/midia.css">
+</head>
+<body class="standalone-body">
+    <div class="spinner-overlay" id="loader" style="display: none;"><div class="spinner"></div></div>
+    <div id="toast-container"></div>
+
+    <main class="editor-standalone-layout">
+        <div class="page-header">
+            <a href="/dashboard/ajustes" class="secondary-btn back-btn">
+                <iconify-icon icon="solar:alt-arrow-left-bold"></iconify-icon>
+            </a>
+            <h1>Identidade da Loja</h1>
+        </div>
+
+        <div id="skeleton-view" class="skeleton-container" style="display: block;">
+            <div class="skeleton-box" style="height: 350px; border-radius: 12px; margin-bottom: 20px;"></div>
+            <div class="skeleton-box" style="height: 150px; border-radius: 12px;"></div>
+        </div>
+        
+        <div id="content-view" style="display: none;">
+            <div class="form-container" style="margin-bottom: 20px;">
+                 <h2 class="section-title">Logotipo</h2>
+                <div class="upload-grid" style="grid-template-columns: 1fr;"> <!-- Grid alterado para ocupar espaço total e centralizar -->
+                    <div class="upload-area" style="padding: 30px 15px; max-width: 500px; margin: 0 auto; width: 100%;">
+                        <h2 style="font-size:1.2rem; color:var(--azul-escuro); margin-bottom:15px; font-weight: 800;">O Logotipo da sua Loja</h2>
+                        <div class="image-preview" id="logo-preview" style="background: transparent; margin: 0 auto 20px;"><iconify-icon class="placeholder-icon" icon="solar:user-circle-bold-duotone"></iconify-icon></div>
+                        <label for="logo-file-input" class="file-upload-btn">
+                            <iconify-icon icon="solar:upload-track-linear"></iconify-icon> Selecionar Logo
+                        </label>
+                        <input type="file" id="logo-file-input" class="file-upload-input" accept="image/*">
+                        <small style="display:block; margin-top: 10px; color: var(--texto-secundario);">Aparecerá no cabeçalho do catálogo e na aba do navegador.</small>
+                    </div>
+                </div>
+            </div>
+
+            <form id="description-form" class="form-container">
+                <h2 class="section-title">Mensagem de Boas-Vindas e SEO</h2>
+                <div class="form-group">
+                    <label for="storeDescription">Um texto curto que aparecerá na loja e no Google quando alguém pesquisar pela sua marca.</label>
+                    <textarea id="storeDescription" maxlength="160" placeholder="Bem-vindo à nossa loja! Os melhores produtos com a melhor qualidade."></textarea>
+                </div>
+                <div class="footer-actions">
+                    <button type="submit" class="primary-btn btn-giant" style="width:100%;">Salvar Texto</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="/assets/js/dashboard-global.js"></script>
+    <script src="/assets/js/pages/midia.js"></script>
+</body>
+</html>
